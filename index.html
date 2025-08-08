@@ -1,1 +1,328 @@
-tsts
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>kita.gg</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="menu">
+      <div class="background-image"></div>
+      <div class="slider-tooltip" id="slider-tooltip"></div>
+      <div class="tabs">
+        <div class="tab-underline"></div>
+        <div class="tab active" data-tab="main">Main</div>
+        <div class="tab" data-tab="visuals">Visuals</div>
+        <div class="tab" data-tab="config">Config</div>
+        <div class="tab" data-tab="misc">Misc</div>
+      </div>
+      <div class="scrollframe">
+	  
+        <!-- Main Tab -->
+        <div class="content" id="tab-main">
+          <div class="main-sections">
+            <div class="section-column" data-side="Left"></div>
+            <div class="section-column" data-side="Right"></div>
+          </div>
+          <div class="section" data-side="Left">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Local player editing</h3>
+              <input type="checkbox" id="toggle-local-player" checked>
+            </label>
+            <div class="separator"></div>
+            <div class="local-player-content">
+              <div class="slider-group">
+                <div class="slider-label">Walkspeed</div>
+                <input type="range" id="walkspeed" min="0" max="2000" value="16">
+              </div>
+              <div class="slider-group">
+                <div class="slider-label">Jump power</div>
+                <input type="range" id="jumppower" min="0" max="1000" value="50">
+              </div>
+            </div>
+          </div>
+          <div class="section" data-side="Right">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Hitbox expander</h3>
+              <input type="checkbox" id="toggle-hbexpnd" checked>
+            </label>
+            <div class="separator"></div>
+            <div class="hbexpnd-content">
+              <div class="slider-group">
+                <div class="slider-label">Hitbox size</div>
+                <input type="range" id="hbsize" min="1" max="200" value="2">
+              </div>
+            </div>
+          </div>
+          <div class="section" data-side="Left">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Teleport players</h3>
+              <input type="checkbox" id="toggle-tpplrs" checked>
+            </label>
+            <div class="separator"></div>
+            <div class="tpplrs-content">
+              <div class="slider-group">
+                <div class="slider-label">Offset</div>
+                <input type="range" id="tpplrsoffset" min="0" max="50" value="2">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Visuals Tab -->
+        <div class="content hidden" id="tab-visuals">
+          <div class="main-sections">
+            <div class="section-column" data-side="Left"></div>
+            <div class="section-column" data-side="Right"></div>
+          </div>
+          <div class="section" data-side="Left">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Visuals mastertoggle</h3>
+              <input type="checkbox" id="toggle-local-player" checked>
+            </label>
+            <div class="separator"></div>
+            <label>
+              <span>Limit draw distance</span>
+              <input type="checkbox" id="mastertoggle">
+            </label>
+            <div class="slider-group">
+              <div class="slider-label">Max draw distance</div>
+              <input type="range" id="maxdrawdis" min="1" max="20000" value="1000">
+            </div>
+          </div>
+          <div class="section" data-side="Right">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Boxes</h3>
+              <input type="checkbox" id="toggle-local-player" checked>
+            </label>
+            <div class="separator"></div>
+            <label>
+              <span>Border Color</span>
+              <input type="color" id="bordercolor" value="#57a0dc">
+            </label>
+            <label>
+              <span>Filling Color</span>
+              <input type="color" id="fillcolor" value="#57a0dc">
+            </label>
+            <div class="slider-group">
+              <div class="slider-label">Filling transparency</div>
+              <input type="range" id="boxfilling" min="0" max="1" step="0.01" value="1">
+            </div>
+          </div>
+          <div class="section" data-side="Right">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Nametag</h3>
+              <input type="checkbox" id="toggle-local-player" checked>
+            </label>
+            <div class="separator"></div>
+            <label>
+              <span>Show equipped gear</span>
+              <input type="checkbox" id="eitemenabled">
+            </label>
+            <label>
+              <span>Show distance</span>
+              <input type="checkbox" id="dtellereenabled">
+            </label>
+            <label>
+              <span>Text color</span>
+              <input type="color" id="bordercolor" value="#57a0dc">
+            </label>
+            <label>
+              <span>Border color</span>
+              <input type="color" id="fillcolor" value="#57a0dc">
+            </label>
+            <div class="slider-group">
+              <div class="slider-label">Text transparency</div>
+              <input type="range" id="boxfilling" min="0" max="1" step="0.01" value="1">
+            </div>
+          </div>
+          <div class="section" data-side="Left">
+            <label style="justify-content: space-between;">
+              <h3 style="margin: 0;">Tracers</h3>
+              <input type="checkbox" id="toggle-local-player" checked>
+            </label>
+            <div class="separator"></div>
+            <label>
+              <span>Color</span>
+              <input type="color" id="bordercolor" value="#57a0dc">
+            </label>
+            <div class="slider-group">
+              <div class="slider-label">transparency</div>
+              <input type="range" id="boxfilling" min="0" max="1" step="0.01" value="1">
+            </div>
+            <div class="slider-label">Tracer start position</div>
+            <div class="tripleselector">
+              <div class="options">
+                <div class="option selected" data-value="top">Top</div>
+                <div class="option" data-value="mouse">Mouse</div>
+                <div class="option" data-value="bottom">Bottom</div>
+                <div class="selector-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Config Tab -->
+        <div class="content hidden" id="tab-config">
+          <div class="main-sections">
+            <div class="section-column" data-side="Left"></div>
+            <div class="section-column" data-side="Right"></div>
+          </div>
+          <div class="section" data-side="Left">
+            <h3>Config</h3>
+            <label>
+              <span>Ignore Local Player</span>
+              <input type="checkbox" id="ignorelp">
+            </label>
+            <label>
+              <span>Alive Check</span>
+              <input type="checkbox" id="alivecheck">
+            </label>
+          </div>
+        </div>
+        <!-- Misc Tab -->
+        <div class="content hidden" id="tab-misc">
+          <div class="main-sections">
+            <div class="section-column" data-side="Left"></div>
+            <div class="section-column" data-side="Right"></div>
+          </div>
+          <div class="section" data-side="Left">
+            <h3>UI settings</h3>
+            <label>
+              <button class="button" id="example-btn" style="margin-top: 15px;"> Close process </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('example-btn').addEventListener('click', () => {window.chrome.webview.postMessage('close');});
+      const options = document.querySelectorAll('.tripleselector .option');
+      const slline = document.querySelector('.tripleselector .selector-line');
+	  
+      options.forEach((option, index) => {
+        option.addEventListener('click', () => {
+          options.forEach(o => o.classList.remove('selected'));
+          option.classList.add('selected');
+
+          slline.style.left = `${(100 / options.length) * index}%`;
+          console.log('Selected:', option.dataset.value);
+        });
+      });
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.content');
+      const underline = document.querySelector('.tab-underline');
+
+      function updunderline() {
+        const activeTab = document.querySelector('.tab.active');
+        if (!activeTab) return;
+        underline.style.width = activeTab.offsetWidth + 'px';
+        underline.style.left = activeTab.offsetLeft + 'px';
+      }
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          if (tab.classList.contains('active')) return;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          contents.forEach(c => c.classList.add('hidden'));
+          document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+          updunderline();
+        });
+      });
+      window.addEventListener('resize', updunderline);
+      window.addEventListener('load', () => {
+        updunderline();
+        document.querySelectorAll('.content').forEach(content => {
+          const sections = [...content.querySelectorAll('.section')];
+          const leftCol = content.querySelector('[data-side="Left"]');
+          const rightCol = content.querySelector('[data-side="Right"]');
+          if (!leftCol || !rightCol) return;
+          sections.forEach(section => {
+            const side = section.getAttribute('data-side');
+            if (side === 'Left') leftCol.appendChild(section);
+            else if (side === 'Right') rightCol.appendChild(section);
+          });
+        });
+      });
+      ///////////////////////////////////////////////////////////////// sliders
+      const sliders = document.querySelectorAll('input[type="range"]');
+      const tooltip = document.getElementById('slider-tooltip');
+
+      function updateSliderBackground(slider) {
+        const val = parseFloat(slider.value);
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const percent = ((val - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(90deg, #ffc8be ${percent}%, #333 ${percent}%)`;
+      }
+
+      function updttpos(slider) {
+        const rect = slider.getBoundingClientRect();
+        const ctrrect = tooltip.offsetParent.getBoundingClientRect();
+        const val = parseFloat(slider.value);
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const percent = (val - min) / (max - min);
+        const offsetX = rect.left + percent * rect.width - ctrrect.left;
+        const offsetY = rect.top + rect.height / 2 - ctrrect.top;
+        const ttheight = tooltip.offsetHeight;
+        const horoffset = rect.width * 0.03;
+        const veroffset = ttheight * 1.5;
+		
+        tooltip.style.left = `${offsetX - horoffset}px`;
+        tooltip.style.top = `${offsetY - veroffset}px`;
+        tooltip.textContent = `${val} / ${max}`;
+      }
+      sliders.forEach(slider => {
+        updsliderbg(slider);
+        const span = slider.parentElement.querySelector('span');
+        if (span) span.textContent = slider.value;
+        let dragging = false;
+        slider.addEventListener('input', () => {
+          if (span) span.textContent = slider.value;
+          updateSliderBackground(slider);
+          if (dragging) {
+            updsliderbg(slider);
+          }
+        });
+        slider.addEventListener('mousedown', () => {
+          dragging = true;
+          tooltip.style.opacity = 1;
+          updttpos(slider);
+        });
+        window.addEventListener('mouseup', () => {
+          if (dragging) {
+            dragging = false;
+            tooltip.style.opacity = 0;
+          }
+        });
+        slider.addEventListener('mouseleave', () => {
+          if (!dragging) {
+            tooltip.style.opacity = 0;
+          }
+        });
+      });
+    </script>
+    <script>
+      const telem = document.querySelector('.tabs');
+      let mousedown = false;
+      telem.addEventListener('mousedown', (e) => {
+        mousedown = true;
+        const screenX = e.screenX;
+        const screenY = e.screenY;
+        if (window.chrome?.webview) {
+          window.chrome.webview.postMessage(`dragstart:${screenX},${screenY}`);
+        }
+        e.preventDefault();
+      });
+      window.addEventListener('mouseup', () => {
+        mousedown = false;
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!mousedown) return;
+        const screenX = e.screenX;
+        const screenY = e.screenY;
+        if (window.chrome?.webview) {
+          window.chrome.webview.postMessage(`dragmove:${screenX},${screenY}`);
+        }
+      });
+    </script> window.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.content').forEach(tabContent => { const leftColumn = tabContent.querySelector('.section-column[data-side="Left"]'); const rightColumn = tabContent.querySelector('.section-column[data-side="Right"]'); // Move sections into their columns tabContent.querySelectorAll('.section').forEach(section => { const side = section.getAttribute('data-side'); if (side === 'Left' && leftColumn) { leftColumn.appendChild(section); } else if (side === 'Right' && rightColumn) { rightColumn.appendChild(section); } }); }); });
+  </body>
+</html>
