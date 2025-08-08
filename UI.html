@@ -185,47 +185,58 @@
           </div>
           <div class="section" data-side="Left">
             <h3>UI settings</h3>
+            <div class="separator"></div>
             <button class="button" id="randomimage-btn" style="margin-top: 15px;"> Change image </button>
-              <button class="button" id="example-btn" style="margin-top: 15px;"> Close process </button>
+            <button class="button" id="example-btn" style="margin-top: 15px;"> Close process </button>
+            <div class="slider-group">
+              <div class="slider-label">image transparency</div>
+              <input type="range" id="bgimgtransparency" min="0" max="1" step="0.01" value="0.4">
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
-<script>
-  const backgrounds = [
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"
-  ];
+    <script>
+      const backgrounds = ["https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"];
+      let lastIndex = -1;
 
-  let lastindex = -1;
+      function getRandomIndex(exclude) {
+        let index;
+        do {
+          index = Math.floor(Math.random() * backgrounds.length);
+        } while (index === exclude);
+        return index;
+      }
 
-  function grindex(excindex) {
-    let newindex;
-    do {
-      newindex = Math.floor(Math.random() * backgrounds.length);
-    } while (newindex === excindex);
-    return newindex;
-  }
+      function setRandomBackground() {
+        const bg = document.querySelector('.background-image');
+        if (!bg) return;
+        const newIndex = getRandomIndex(lastIndex);
+        bg.style.backgroundImage = `url('${backgrounds[newIndex]}')`;
+        lastIndex = newIndex;
+      }
 
-  function updbg() {
-    const bg = document.querySelector('.background-image');
-    const newindex = grindex(lastindex);
-    lastindex = newindex;
-    bg.style.backgroundImage = `url('${backgrounds[newindex]}')`;
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    updbg();
-    const btn = document.getElementById('randomimage-btn');
-    if (btn) {btn.addEventListener('click', updbg);}
-  });
-</script>
-
-
-    
+      function updateTransparency(value) {
+        const bg = document.querySelector('.background-image');
+        if (bg) {
+          bg.style.opacity = value;
+        }
+      }
+      window.addEventListener('DOMContentLoaded', () => {
+        setRandomBackground();
+        const btn = document.getElementById('randomimage-btn');
+        if (btn) {
+          btn.addEventListener('click', setRandomBackground);
+        }
+        const transparencySlider = document.getElementById('bgimgtransparency');
+        if (transparencySlider) {
+          updateTransparency(transparencySlider.value); // Set initial
+          transparencySlider.addEventListener('input', (e) => {
+            updateTransparency(e.target.value);
+          });
+        }
+      });
+    </script>
     <script>
       document.getElementById('example-btn').addEventListener('click', () => {
         window.chrome.webview.postMessage('close');
