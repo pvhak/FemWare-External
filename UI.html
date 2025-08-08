@@ -196,47 +196,54 @@
         </div>
       </div>
     </div>
-    <script>
-      const backgrounds = ["https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"];
-      let lastIndex = -1;
+<script>
+  const backgrounds = [
+    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png",
+    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png",
+    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png",
+    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"
+  ];
 
-      function getRandomIndex(exclude) {
-        let index;
-        do {
-          index = Math.floor(Math.random() * backgrounds.length);
-        } while (index === exclude);
-        return index;
-      }
+  let currentIndex = 0;
 
-      function setRandomBackground() {
-        const bg = document.querySelector('.background-image');
-        if (!bg) return;
-        const newIndex = getRandomIndex(lastIndex);
-        bg.style.backgroundImage = `url('${backgrounds[newIndex]}')`;
-        lastIndex = newIndex;
-      }
+  function setBackground(index) {
+    const bg = document.querySelector('.background-image');
+    if (bg) {
+      bg.style.backgroundImage = `url('${backgrounds[index]}')`;
+    }
+  }
 
-      function updateTransparency(value) {
-        const bg = document.querySelector('.background-image');
-        if (bg) {
-          bg.style.opacity = value;
-        }
-      }
-      window.addEventListener('DOMContentLoaded', () => {
-        setRandomBackground();
-        const btn = document.getElementById('randomimage-btn');
-        if (btn) {
-          btn.addEventListener('click', setRandomBackground);
-        }
-        const transparencySlider = document.getElementById('bgimgtransparency');
-        if (transparencySlider) {
-          updateTransparency(transparencySlider.value); // Set initial
-          transparencySlider.addEventListener('input', (e) => {
-            updateTransparency(e.target.value);
-          });
-        }
+  function cycleBackground() {
+    currentIndex = (currentIndex + 1) % backgrounds.length;
+    setBackground(currentIndex);
+  }
+
+  function updateTransparency(value) {
+    const bg = document.querySelector('.background-image');
+    if (bg) {
+      bg.style.opacity = value;
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Start at background1.png
+    setBackground(currentIndex);
+
+    const btn = document.getElementById('randomimage-btn');
+    if (btn) {
+      btn.addEventListener('click', cycleBackground);
+    }
+
+    const transparencySlider = document.getElementById('bgimgtransparency');
+    if (transparencySlider) {
+      updateTransparency(transparencySlider.value); // Apply initial opacity
+      transparencySlider.addEventListener('input', (e) => {
+        updateTransparency(e.target.value);
       });
-    </script>
+    }
+  });
+</script>
+
     <script>
       document.getElementById('example-btn').addEventListener('click', () => {
         window.chrome.webview.postMessage('close');
