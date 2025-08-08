@@ -212,34 +212,28 @@
 
     <script src="/scripts/background-img.js"></script>
     <script src="/scripts/ui.js"></script>
+    <script src="/scripts/movement.js"></script>
+
     
     <script>
       document.getElementById('example-btn').addEventListener('click', () => { window.chrome.webview.postMessage('close'); });
     </script>
     
-    <script>
-      const tabsElement = document.querySelector('.tabs');
-      let isMouseDown = false;
-      tabsElement.addEventListener('mousedown', (e) => {
-        isMouseDown = true;
-        const screenX = e.screenX;
-        const screenY = e.screenY;
-        if (window.chrome?.webview) {
-          window.chrome.webview.postMessage(`dragstart:${screenX},${screenY}`);
-        }
-        e.preventDefault();
-      });
-      window.addEventListener('mouseup', () => {
-        isMouseDown = false;
-      });
-      window.addEventListener('mousemove', (e) => {
-        if (!isMouseDown) return;
-        const screenX = e.screenX;
-        const screenY = e.screenY;
-        if (window.chrome?.webview) {
-          window.chrome.webview.postMessage(`dragmove:${screenX},${screenY}`);
-        }
-      });
-    </script> window.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.content').forEach(tabContent => { const leftColumn = tabContent.querySelector('.section-column[data-side="Left"]'); const rightColumn = tabContent.querySelector('.section-column[data-side="Right"]'); // Move sections into their columns tabContent.querySelectorAll('.section').forEach(section => { const side = section.getAttribute('data-side'); if (side === 'Left' && leftColumn) { leftColumn.appendChild(section); } else if (side === 'Right' && rightColumn) { rightColumn.appendChild(section); } }); }); });
+    window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.content').forEach(tcontent => {
+            const leftcol = tcontent.querySelector('.section-column[data-side="Left"]');
+            const rightcol = tcontent.querySelector('.section-column[data-side="Right"]');
+
+            tcontent.querySelectorAll('.section').forEach(section => {
+                const side = section.getAttribute('data-side');
+                if (side === 'Left' && leftcol) {
+                    leftcol.appendChild(section);
+                } else if (side === 'Right' && rightcol) {
+                    rightcol.appendChild(section);
+                }
+            });
+        });
+    });
+
   </body>
 </html>
