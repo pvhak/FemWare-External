@@ -186,12 +186,41 @@
           </div>
           <div class="section" data-side="Left">
             <h3>UI settings</h3>
-            <label>
-              <button class="button" id="example-btn" style="margin-top: 15px;"> Close process </button>
+            <button class="button" id="randomimage-btn" style="margin-top: 15px;"> Randomize image </button>
+            <button class="button" id="example-btn" style="margin-top: 15px;"> Close process </button>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      const backgrounds = ["https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"];
+      let lastindex = -1;
+
+      function grindex(excindex) {
+        let newindex;
+        do {
+          newindex = Math.floor(Math.random() * backgrounds.length);
+        } while (newindex === excindex);
+        return newindex;
+      }
+
+      function updatebg() {
+        const bg = document.querySelector('.background-image');
+        const newindex = grindex(lastindex);
+        lastindex = newindex;
+        bg.style.backgroundImage = `url('${backgrounds[newindex]}')`;
+      }
+      window.addEventListener('DOMContentLoaded', () => {
+        updatebg();
+        const btn = document.getElementById('randomimage-btn');
+        if (btn) {
+          btn.addEventListener('click', updateBackground);
+        }
+      });
+    </script>
+
+	  
     <script>
       document.getElementById('example-btn').addEventListener('click', () => {window.chrome.webview.postMessage('close');});
       const options = document.querySelectorAll('.tripleselector .option');
