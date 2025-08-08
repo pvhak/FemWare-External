@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>kita.gg</title>
+    <link rel="icon" href="/images/icon.png" type="image/png">
+    <style> html,body{margin: 0;padding: 0;height: 100%;background-color: #111;color: #eee;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;overflow: hidden}.container{display: flex;flex-direction: column;height: 100%}header{flex: 1;display: flex;flex-direction: column;align-items: center;justify-content: center;text-align: center;padding: 0 20px}header h1{font-size: 3rem;color: #ffc8be;margin-bottom: 1rem;animation: glow 2s ease-in-out infinite alternate}@keyframes glow{0%{text-shadow: 0 0 2px #ffc8be88, 0 0 3px #ffc8be88, 0 0 10px #ffc8be44}100%{text-shadow: 0 0 5px #ffc8becc, 0 0 8px #ffc8becc, 0 0 20px #ffc8beaa}}header p{font-size: 1.2rem;color: #ccc;max-width: 600px}footer{text-align: center;padding: 30px 20px;font-size: 0.9rem;color: #555;background-color: #0c0c0c}.background-image{position: absolute;top: 52px;right: 0;bottom: 0;width: 40%;background-size: contain;background-repeat: no-repeat;background-position: right bottom;pointer-events: none;z-index: 1;opacity: 0.2;height: calc(100vh - 52px)} </style>
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <div class="container">
+      <header>
+        <h1>kita.gg</h1>
+        <p>A product made by Slimers INC</p>
+      </header>
+      <footer> &copy; 2025 kita.gg – All rights reserved. </footer>
+    </div>
+    <script>
+      const bgs = ["https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png", "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"];
+      document.querySelector('.background-image').style.backgroundImage = `url('${bgs[Math.floor(Math.random() * bgs.length)]}')`;
+    </script>
+  </body>
+</html>
