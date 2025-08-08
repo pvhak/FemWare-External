@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    html,body{height:100%;margin:0}
+    body{display:flex;align-items:center;justify-content:center;background:#000;color:#fff;font-family:sans-serif;cursor:pointer;user-select:none;}
+    .label{font-size:3rem;font-weight:bold;}
+    .whiteout {background:#fff !important;color:transparent !important;}
+  </style>
+</head>
+<body>
+  <div class="label">click me twin....</div>
+
+  <script>
+    (function(){
+      let erm = false;
+
+      function gowhite(){
+        if(erm) return;
+        erm = true;
+        const el = document.documentElement;
+        const request = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        if(request){
+          try { request.call(el).catch(()=>{}).finally(()=>whiteee()); } catch { whiteee(); }
+        } else {
+          whiteee();
+        }
+      }
+
+      function whiteee(){
+        document.body.className = 'whiteout';
+        document.body.innerHTML = '';
+        document.documentElement.style.background = '#fff';
+        document.body.style.background = '#fff';
+      }
+
+      document.addEventListener('click', gowhite, {once:true});
+      document.addEventListener('keydown',(e)=>{
+        if(e.code === 'Enter' || e.code === 'Space'){
+          e.preventDefault();
+          gowhite();
+        }
+      }, {once:true});
+    })();
+  </script>
+</body>
+</html>
