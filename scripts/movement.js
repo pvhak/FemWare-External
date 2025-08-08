@@ -1,7 +1,7 @@
-const tabs = document.querySelector('.tabs');
+const faps = document.querySelector('.tabs'); // I HAD TO
 let ismousedown = false;
 
-tabs.addEventListener('mousedown', (e) => {
+faps.addEventListener('mousedown', (e) => {
   ismousedown = true;
   const screenX = e.screenX;
   const screenY = e.screenY;
