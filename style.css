@@ -117,7 +117,7 @@ body {
 }
 
 .section {
-  background: rgba(25, 25, 25, 0.8);
+  background: rgba(25, 25, 25, 0);
   border-radius: 12px;
   padding: 20px;
   border: 1.5px solid #2a2a2a;
