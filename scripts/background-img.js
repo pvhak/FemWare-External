@@ -1,8 +1,8 @@
   const bgs = [
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background1.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background2.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background3.png",
-    "https://raw.githubusercontent.com/pvhak/FemWare-External/refs/heads/main/images/bg/background4.png"
+    "https://raw.githubusercontent.com/pvhak/SLME/refs/heads/main/images/bg/background1.png",
+    "https://raw.githubusercontent.com/pvhak/SLME/refs/heads/main/images/bg/background2.png",
+    "https://raw.githubusercontent.com/pvhak/SLME/refs/heads/main/images/bg/background3.png",
+    "https://raw.githubusercontent.com/pvhak/SLME/refs/heads/main/images/bg/background4.png"
   ]; // theres def a better method for this
 
   let cindex = 0;
